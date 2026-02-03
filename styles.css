@@ -50,6 +50,12 @@ body {
   gap: 1.5rem;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -229,7 +235,8 @@ body {
 .features,
 .preview,
 .pricing,
-.faq {
+.faq,
+.auth {
   padding: 4rem 0;
 }
 
@@ -375,6 +382,113 @@ body {
   line-height: 1.6;
 }
 
+.auth-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.auth-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.auth-card.alt {
+  background: rgba(34, 81, 255, 0.08);
+}
+
+.auth-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-form label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.auth-form input,
+.auth-form select {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.auth-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.muted.small {
+  font-size: 0.85rem;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.modal-card {
+  position: relative;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 2rem;
+  width: min(420px, 90vw);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
 .site-footer {
   margin-top: auto;
   background: var(--text);
@@ -471,6 +585,11 @@ body {
   }
 
   .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .auth-row {
     flex-direction: column;
     align-items: flex-start;
   }
