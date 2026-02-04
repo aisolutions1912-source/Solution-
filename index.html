@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PayStubs Pro | Pay Stub & Payroll Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="container header-content">
+          <div class="brand">
+            <span class="brand-mark">PS</span>
+            <div>
+              <p class="brand-name">PayStubs Pro</p>
+              <p class="brand-tag">Demo payroll portal</p>
+            </div>
+          </div>
+          <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="/create-paystub">Create pay stub</a>
+            <a href="#preview">Preview</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+          <div class="header-actions">
+            <button class="btn ghost" data-open-modal="signin">Sign in</button>
+            <button class="btn primary small" data-open-modal="signup">Create account</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="container hero-grid">
+            <div>
+              <p class="pill">Trusted by 8,000+ small teams</p>
+              <h1>Create polished pay stubs in minutes.</h1>
+              <p class="lead">
+                PayStubs Pro is a demo experience inspired by epaystubs.net. Generate compliant pay stubs,
+                save employee history, and export PDF-ready statements in a few clicks.
+              </p>
+              <div class="hero-actions">
+                <button class="btn primary" data-open-modal="signup">Start a new pay stub</button>
+                <button class="btn secondary" data-open-modal="signin">Watch demo</button>
+              </div>
+              <div class="hero-metrics">
+                <div>
+                  <h3>99.9%</h3>
+                  <p>PDF accuracy</p>
+                </div>
+                <div>
+                  <h3>24/7</h3>
+                  <p>Payroll support</p>
+                </div>
+                <div>
+                  <h3>5 min</h3>
+                  <p>Average setup</p>
+                </div>
+              </div>
+            </div>
+            <div class="hero-card">
+              <div class="card-header">
+                <div>
+                  <p class="card-title">Pay Stub Preview</p>
+                  <p class="card-subtitle">Weekly • Direct deposit</p>
+                </div>
+                <span class="badge">Demo</span>
+              </div>
+              <div class="card-body">
+                <div class="stub-row">
+                  <span>Employee</span>
+                  <strong>Jordan Ellis</strong>
+                </div>
+                <div class="stub-row">
+                  <span>Pay period</span>
+                  <strong>Aug 05 - Aug 11</strong>
+                </div>
+                <div class="stub-row">
+                  <span>Gross pay</span>
+                  <strong>$1,920.00</strong>
+                </div>
+                <div class="stub-row">
+                  <span>Deductions</span>
+                  <strong>$352.50</strong>
+                </div>
+                <div class="stub-total">
+                  <span>Net pay</span>
+                  <strong>$1,567.50</strong>
+                </div>
+                <div class="stub-progress">
+                  <div>
+                    <p>Federal tax</p>
+                    <span>$210.00</span>
+                  </div>
+                  <div>
+                    <p>State tax</p>
+                    <span>$92.50</span>
+                  </div>
+                  <div>
+                    <p>Benefits</p>
+                    <span>$50.00</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn small" id="downloadPaystubPdf">Download PDF</button>
+                <button class="btn small ghost">Edit details</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="features" id="features">
+          <div class="container">
+            <div class="section-head">
+              <h2>Everything you need to run payroll smoothly</h2>
+              <p>Generate professional pay stubs, store employees, and track payroll history.</p>
+            </div>
+            <div class="feature-grid">
+              <article>
+                <h3>Automated deductions</h3>
+                <p>Configure tax rates and benefits once. The calculator applies them every run.</p>
+              </article>
+              <article>
+                <h3>Branded templates</h3>
+                <p>Add your logo, company address, and custom messaging to each pay stub.</p>
+              </article>
+              <article>
+                <h3>Instant exports</h3>
+                <p>Download PDF and CSV files with one click or share secure links.</p>
+              </article>
+              <article>
+                <h3>Compliance insights</h3>
+                <p>Stay aligned with federal and state requirements using built-in checklists.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="create-paystub" id="create-paystub">
+          <div class="container create-grid">
+            <div>
+              <div class="section-head">
+                <h2>Create a pay stub in minutes</h2>
+                <p>Fill out the form to generate an instant demo pay stub preview and totals.</p>
+              </div>
+              <form class="paystub-form" id="paystubForm">
+                <label>
+                  Employee name
+                  <input type="text" id="employeeName" value="Jordan Ellis" placeholder="Jordan Ellis" />
+                </label>
+                <label>
+                  Pay period
+                  <input type="text" id="payPeriod" value="Aug 05 - Aug 11" placeholder="Aug 05 - Aug 11" />
+                </label>
+                <div class="form-row">
+                  <label>
+                    Hourly rate ($)
+                    <input type="number" id="hourlyRate" min="0" step="0.01" value="24" />
+                  </label>
+                  <label>
+                    Hours worked
+                    <input type="number" id="hoursWorked" min="0" step="0.1" value="80" />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label>
+                    Bonus ($)
+                    <input type="number" id="bonusPay" min="0" step="0.01" value="0" />
+                  </label>
+                  <label>
+                    Other earnings ($)
+                    <input type="number" id="otherEarnings" min="0" step="0.01" value="0" />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label>
+                    Federal tax ($)
+                    <input type="number" id="federalTax" min="0" step="0.01" value="210" />
+                  </label>
+                  <label>
+                    State tax ($)
+                    <input type="number" id="stateTax" min="0" step="0.01" value="92.5" />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label>
+                    Benefits ($)
+                    <input type="number" id="benefits" min="0" step="0.01" value="50" />
+                  </label>
+                  <label>
+                    Other deductions ($)
+                    <input type="number" id="otherDeductions" min="0" step="0.01" value="0" />
+                  </label>
+                </div>
+                <button type="submit" class="btn primary">Generate pay stub</button>
+              </form>
+            </div>
+            <div class="hero-card paystub-preview">
+              <div class="card-header">
+                <div>
+                  <p class="card-title">Pay Stub Preview</p>
+                  <p class="card-subtitle" id="previewPayPeriod">Weekly • Aug 05 - Aug 11</p>
+                </div>
+                <span class="badge">Live</span>
+              </div>
+              <div class="card-body">
+                <div class="stub-row">
+                  <span>Employee</span>
+                  <strong id="previewEmployee">Jordan Ellis</strong>
+                </div>
+                <div class="stub-row">
+                  <span>Gross pay</span>
+                  <strong id="previewGross">$1,920.00</strong>
+                </div>
+                <div class="stub-row">
+                  <span>Deductions</span>
+                  <strong id="previewDeductions">$352.50</strong>
+                </div>
+                <div class="stub-total">
+                  <span>Net pay</span>
+                  <strong id="previewNet">$1,567.50</strong>
+                </div>
+                <div class="stub-progress">
+                  <div>
+                    <p>Federal tax</p>
+                    <span id="previewFederal">$210.00</span>
+                  </div>
+                  <div>
+                    <p>State tax</p>
+                    <span id="previewState">$92.50</span>
+                  </div>
+                  <div>
+                    <p>Benefits</p>
+                    <span id="previewBenefits">$50.00</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn small" id="downloadPaystubPdf">Download PDF</button>
+                <button class="btn small ghost">Edit details</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="preview" id="preview">
+          <div class="container preview-grid">
+            <div class="preview-card">
+              <h3>Payroll workflow</h3>
+              <ol>
+                <li>Enter employee hours and bonuses.</li>
+                <li>Confirm deductions and reimbursements.</li>
+                <li>Preview pay stub before sending.</li>
+                <li>Export PDF or direct deposit file.</li>
+              </ol>
+            </div>
+            <div class="preview-card alt">
+              <h3>Employee portal</h3>
+              <p>
+                Give employees access to a secure portal with historical pay stubs, tax forms, and
+                notifications on upcoming runs.
+              </p>
+              <div class="toggle">
+                <span>Auto-send pay stubs</span>
+                <button class="toggle-btn" id="toggleBtn" aria-pressed="false">
+                  <span class="toggle-thumb"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="pricing" id="pricing">
+          <div class="container">
+            <div class="section-head">
+              <h2>Simple pricing that scales with you</h2>
+              <p>Choose a plan to get started. Upgrade anytime as your team grows.</p>
+            </div>
+            <div class="pricing-grid">
+              <article class="price-card">
+                <h3>Starter</h3>
+                <p class="price">$19<span>/mo</span></p>
+                <ul>
+                  <li>Up to 3 employees</li>
+                  <li>Unlimited pay stubs</li>
+                  <li>Email support</li>
+                </ul>
+                <button class="btn secondary">Choose plan</button>
+              </article>
+              <article class="price-card featured">
+                <div class="badge">Most popular</div>
+                <h3>Growth</h3>
+                <p class="price">$49<span>/mo</span></p>
+                <ul>
+                  <li>Up to 20 employees</li>
+                  <li>Direct deposit exports</li>
+                  <li>Live chat support</li>
+                </ul>
+                <button class="btn primary">Choose plan</button>
+              </article>
+              <article class="price-card">
+                <h3>Enterprise</h3>
+                <p class="price">Custom</p>
+                <ul>
+                  <li>Unlimited employees</li>
+                  <li>Dedicated payroll advisor</li>
+                  <li>API & integrations</li>
+                </ul>
+                <button class="btn secondary">Contact sales</button>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="faq" id="faq">
+          <div class="container">
+            <div class="section-head">
+              <h2>Frequently asked questions</h2>
+              <p>Quick answers for getting started with the PayStubs Pro demo.</p>
+            </div>
+            <div class="faq-grid">
+              <article>
+                <h4>Is this a real payroll service?</h4>
+                <p>No. This is a demo site built as a visual clone of epaystubs.net.</p>
+              </article>
+              <article>
+                <h4>Can I download a pay stub?</h4>
+                <p>Yes, the demo shows where PDF exports and downloads would live.</p>
+              </article>
+              <article>
+                <h4>Does it support contractors?</h4>
+                <p>Contractor pay stubs and 1099 summaries are included in the template.</p>
+              </article>
+              <article>
+                <h4>Can I integrate with my HRIS?</h4>
+                <p>The enterprise plan highlights integrations and dedicated support options.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="auth" id="auth">
+          <div class="container auth-grid">
+            <div class="auth-card">
+              <div>
+                <p class="pill">Secure login</p>
+                <h2>Sign in to manage your pay stubs.</h2>
+                <p class="muted">
+                  Access your dashboard, download statements, and review employee history in one secure place.
+                </p>
+              </div>
+              <form class="auth-form">
+                <label>
+                  Email address
+                  <input type="email" placeholder="you@company.com" />
+                </label>
+                <label>
+                  Password
+                  <input type="password" placeholder="••••••••" />
+                </label>
+                <div class="auth-row">
+                  <label class="checkbox">
+                    <input type="checkbox" />
+                    Remember me
+                  </label>
+                  <a href="#">Forgot password?</a>
+                </div>
+                <button type="button" class="btn primary">Sign in</button>
+              </form>
+            </div>
+            <div class="auth-card alt">
+              <div>
+                <p class="pill">New account</p>
+                <h2>Create your payroll workspace.</h2>
+                <p class="muted">
+                  Set up your company profile and invite employees to receive their pay stubs instantly.
+                </p>
+              </div>
+              <form class="auth-form">
+                <label>
+                  Full name
+                  <input type="text" placeholder="Jordan Ellis" />
+                </label>
+                <label>
+                  Work email
+                  <input type="email" placeholder="jordan@company.com" />
+                </label>
+                <label>
+                  Company size
+                  <select>
+                    <option>1-3 employees</option>
+                    <option>4-10 employees</option>
+                    <option>11-25 employees</option>
+                    <option>26+ employees</option>
+                  </select>
+                </label>
+                <button type="button" class="btn secondary">Create account</button>
+                <p class="muted small">
+                  By creating an account you agree to the demo terms and privacy policy.
+                </p>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-content">
+          <div>
+            <h3>PayStubs Pro</h3>
+            <p>Modern pay stub generator demo experience.</p>
+          </div>
+          <div class="footer-links">
+            <div>
+              <h4>Product</h4>
+              <a href="#">Features</a>
+              <a href="#">Pricing</a>
+              <a href="#">Security</a>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <a href="#">About</a>
+              <a href="#">Careers</a>
+              <a href="#">Contact</a>
+            </div>
+            <div>
+              <h4>Legal</h4>
+              <a href="#">Terms</a>
+              <a href="#">Privacy</a>
+              <a href="#">Cookies</a>
+            </div>
+          </div>
+        </div>
+        <div class="container footer-bottom">
+          <p>© 2024 PayStubs Pro. Demo clone for presentation only.</p>
+          <button class="btn ghost small">Back to top</button>
+        </div>
+      </footer>
+    </div>
+
+    <div class="modal" data-modal="signin" aria-hidden="true">
+      <div class="modal-overlay" data-close-modal></div>
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <div class="modal-header">
+          <h3>Welcome back</h3>
+          <button class="icon-btn" data-close-modal aria-label="Close">✕</button>
+        </div>
+        <p class="muted">Sign in to access your payroll dashboard.</p>
+        <form class="auth-form">
+          <label>
+            Email address
+            <input type="email" placeholder="you@company.com" />
+          </label>
+          <label>
+            Password
+            <input type="password" placeholder="••••••••" />
+          </label>
+          <button type="button" class="btn primary">Sign in</button>
+          <p class="muted small">Need an account? <a href="#" data-open-modal="signup">Create one</a>.</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" data-modal="signup" aria-hidden="true">
+      <div class="modal-overlay" data-close-modal></div>
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <div class="modal-header">
+          <h3>Create your account</h3>
+          <button class="icon-btn" data-close-modal aria-label="Close">✕</button>
+        </div>
+        <p class="muted">Start generating pay stubs for your team.</p>
+        <form class="auth-form">
+          <label>
+            Full name
+            <input type="text" placeholder="Jordan Ellis" />
+          </label>
+          <label>
+            Work email
+            <input type="email" placeholder="jordan@company.com" />
+          </label>
+          <label>
+            Create password
+            <input type="password" placeholder="At least 8 characters" />
+          </label>
+          <button type="button" class="btn primary">Create account</button>
+          <p class="muted small">Already have an account? <a href="#" data-open-modal="signin">Sign in</a>.</p>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
