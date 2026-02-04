@@ -110,7 +110,7 @@ if (paystubForm) {
 
 const downloadPaystubButton = document.getElementById("downloadPaystubPdf");
 
-if (downloadPaystubButton) {
+if (downloadPaystubButton && paystubForm) {
   downloadPaystubButton.addEventListener("click", (event) => {
     event.preventDefault();
 

@@ -334,6 +334,210 @@ body {
   border: none;
 }
 
+.builder-page .site-header {
+  position: sticky;
+}
+
+.builder-hero {
+  padding: 4rem 0 2rem;
+}
+
+.builder-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.builder-body {
+  padding: 2rem 0 5rem;
+}
+
+.builder-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.builder-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.progress .step {
+  background: var(--bg);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+}
+
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.field-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.table {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.table-row input,
+.table-row select {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  font-family: inherit;
+}
+
+.table-row .icon-btn {
+  justify-self: center;
+}
+
+.helper {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.file-input {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px dashed var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.file-input input {
+  display: none;
+}
+
+.builder-preview {
+  position: sticky;
+  top: 120px;
+}
+
+.preview-card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview-title {
+  font-weight: 600;
+}
+
+.preview-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.preview-section {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.preview-table {
+  display: grid;
+  gap: 0.5rem;
+  color: var(--muted);
+}
+
+.preview-table div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.preview-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(34, 81, 255, 0.08);
+  font-weight: 600;
+}
+
+.summary-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.summary-grid span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.ytd {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.preview-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.badge-warning {
+  background: rgba(249, 115, 22, 0.2);
+  color: var(--accent);
+}
+
+.table-row[data-type="taxes"] {
+  grid-template-columns: 2fr 1fr 1fr auto;
+}
+
+.table-row[data-type="deductions"] {
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+}
+
 .preview-card ol {
   padding-left: 1.1rem;
   color: var(--muted);
@@ -622,6 +826,23 @@ body {
 
   .paystub-preview {
     position: static;
+  }
+
+  .builder-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .builder-preview {
+    position: static;
+  }
+
+  .table-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .table-row[data-type="taxes"],
+  .table-row[data-type="deductions"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

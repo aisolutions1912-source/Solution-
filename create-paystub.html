@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Pay Stub | PayStubs Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page builder-page">
+      <header class="site-header">
+        <div class="container header-content">
+          <div class="brand">
+            <span class="brand-mark">PS</span>
+            <div>
+              <p class="brand-name">PayStubs Pro</p>
+              <p class="brand-tag">Create Pay Stub</p>
+            </div>
+          </div>
+          <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/create-paystub" class="is-active">Create pay stub</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/#faq">FAQ</a>
+          </nav>
+          <div class="header-actions">
+            <button class="btn ghost" data-open-modal="signin">Sign in</button>
+            <button class="btn primary small" data-open-modal="signup">Create account</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="builder">
+        <section class="builder-hero">
+          <div class="container">
+            <p class="pill">Demo pay stub builder</p>
+            <h1>Create a compliant pay stub in a few steps.</h1>
+            <p class="lead">
+              Build a pay stub for any employee. Add earnings, taxes, and deductions, then preview the
+              statement in real time. This is a demo workflow—no data is submitted.
+            </p>
+            <div class="builder-actions">
+              <button class="btn secondary" id="fillExample">Use example data</button>
+              <button class="btn ghost" id="resetForm">Reset form</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="builder-body">
+          <div class="container builder-grid">
+            <form class="builder-form" id="paystubBuilder">
+              <div class="progress">
+                <span class="step">1. Company</span>
+                <span class="step">2. Employee</span>
+                <span class="step">3. Pay period</span>
+                <span class="step">4. Earnings</span>
+                <span class="step">5. Taxes & deductions</span>
+                <span class="step">6. Review</span>
+              </div>
+
+              <section class="card" aria-labelledby="companyTitle">
+                <h2 id="companyTitle">Company details</h2>
+                <div class="field-grid">
+                  <label>
+                    Company name *
+                    <input type="text" name="companyName" required />
+                  </label>
+                  <label>
+                    Company ID / EIN
+                    <input type="text" name="companyId" />
+                  </label>
+                </div>
+                <label>
+                  Address
+                  <input type="text" name="companyAddress" />
+                </label>
+                <div class="field-grid">
+                  <label>
+                    Phone
+                    <input type="tel" name="companyPhone" />
+                  </label>
+                  <label>
+                    Email
+                    <input type="email" name="companyEmail" />
+                  </label>
+                </div>
+              </section>
+
+              <section class="card" aria-labelledby="employeeTitle">
+                <h2 id="employeeTitle">Employee details</h2>
+                <div class="field-grid">
+                  <label>
+                    Employee name *
+                    <input type="text" name="employeeName" required />
+                  </label>
+                  <label>
+                    Employee ID
+                    <input type="text" name="employeeId" />
+                  </label>
+                </div>
+                <label>
+                  Address
+                  <input type="text" name="employeeAddress" />
+                </label>
+              </section>
+
+              <section class="card" aria-labelledby="payPeriodTitle">
+                <h2 id="payPeriodTitle">Pay period</h2>
+                <div class="field-grid">
+                  <label>
+                    Pay frequency
+                    <select name="payFrequency">
+                      <option value="Weekly">Weekly</option>
+                      <option value="Biweekly">Biweekly</option>
+                      <option value="Semimonthly">Semimonthly</option>
+                      <option value="Monthly">Monthly</option>
+                    </select>
+                  </label>
+                  <label>
+                    Pay date *
+                    <input type="date" name="payDate" required />
+                  </label>
+                </div>
+                <div class="field-grid">
+                  <label>
+                    Period start *
+                    <input type="date" name="periodStart" required />
+                  </label>
+                  <label>
+                    Period end *
+                    <input type="date" name="periodEnd" required />
+                  </label>
+                </div>
+              </section>
+
+              <section class="card" aria-labelledby="earningsTitle">
+                <div class="card-header-row">
+                  <h2 id="earningsTitle">Earnings</h2>
+                  <button type="button" class="btn small" data-add-row="earnings">Add earning</button>
+                </div>
+                <div class="table" id="earningsRows"></div>
+                <p class="helper">Hourly and overtime calculate automatically. Other types use the amount field.</p>
+              </section>
+
+              <section class="card" aria-labelledby="taxesTitle">
+                <div class="card-header-row">
+                  <h2 id="taxesTitle">Taxes</h2>
+                  <button type="button" class="btn small" data-add-row="taxes">Add tax</button>
+                </div>
+                <div class="table" id="taxRows"></div>
+              </section>
+
+              <section class="card" aria-labelledby="deductionsTitle">
+                <div class="card-header-row">
+                  <h2 id="deductionsTitle">Deductions</h2>
+                  <button type="button" class="btn small" data-add-row="deductions">Add deduction</button>
+                </div>
+                <div class="table" id="deductionRows"></div>
+              </section>
+
+              <section class="card" aria-labelledby="ytdTitle">
+                <h2 id="ytdTitle">Prior year-to-date totals (optional)</h2>
+                <div class="field-grid">
+                  <label>
+                    Prior YTD gross
+                    <input type="number" min="0" step="0.01" name="priorGross" />
+                  </label>
+                  <label>
+                    Prior YTD taxes
+                    <input type="number" min="0" step="0.01" name="priorTaxes" />
+                  </label>
+                  <label>
+                    Prior YTD deductions
+                    <input type="number" min="0" step="0.01" name="priorDeductions" />
+                  </label>
+                </div>
+              </section>
+
+              <section class="card" aria-labelledby="saveTitle">
+                <h2 id="saveTitle">Save & export</h2>
+                <div class="builder-actions">
+                  <button type="button" class="btn secondary" id="saveSnapshot">Save</button>
+                  <button type="button" class="btn ghost" id="loadSnapshot">Load</button>
+                  <button type="button" class="btn ghost" id="exportJson">Export JSON</button>
+                  <label class="file-input">
+                    Import JSON
+                    <input type="file" id="importJson" accept="application/json" />
+                  </label>
+                </div>
+                <p class="helper">Saved data stays in your browser only.</p>
+              </section>
+            </form>
+
+            <aside class="builder-preview" aria-live="polite">
+              <div class="preview-card">
+                <div class="preview-header">
+                  <div>
+                    <p class="preview-title">Pay Stub Preview</p>
+                    <p class="preview-meta" id="previewPeriod"></p>
+                  </div>
+                  <span class="badge" id="netBadge">Net pay</span>
+                </div>
+
+                <div class="preview-section">
+                  <h3>Employer</h3>
+                  <p id="previewCompany"></p>
+                </div>
+
+                <div class="preview-section">
+                  <h3>Employee</h3>
+                  <p id="previewEmployee"></p>
+                </div>
+
+                <div class="preview-section">
+                  <h3>Earnings</h3>
+                  <div class="preview-table" id="previewEarnings"></div>
+                  <div class="preview-total">
+                    <span>Gross pay</span>
+                    <strong id="previewGross"></strong>
+                  </div>
+                </div>
+
+                <div class="preview-section">
+                  <h3>Taxes</h3>
+                  <div class="preview-table" id="previewTaxes"></div>
+                  <div class="preview-total">
+                    <span>Total taxes</span>
+                    <strong id="previewTaxesTotal"></strong>
+                  </div>
+                </div>
+
+                <div class="preview-section">
+                  <h3>Deductions</h3>
+                  <div class="preview-table" id="previewDeductions"></div>
+                  <div class="preview-total">
+                    <span>Total deductions</span>
+                    <strong id="previewDeductionsTotal"></strong>
+                  </div>
+                </div>
+
+                <div class="preview-section">
+                  <h3>Summary</h3>
+                  <div class="summary-grid">
+                    <div>
+                      <span>Taxable wages</span>
+                      <strong id="previewTaxable"></strong>
+                    </div>
+                    <div>
+                      <span>Net pay</span>
+                      <strong id="previewNet"></strong>
+                    </div>
+                  </div>
+                  <div class="ytd">
+                    <p>Year-to-date</p>
+                    <div class="summary-grid">
+                      <div>
+                        <span>Gross</span>
+                        <strong id="previewYtdGross"></strong>
+                      </div>
+                      <div>
+                        <span>Taxes</span>
+                        <strong id="previewYtdTaxes"></strong>
+                      </div>
+                      <div>
+                        <span>Deductions</span>
+                        <strong id="previewYtdDeductions"></strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="preview-actions">
+                  <button type="button" class="btn primary" id="downloadPaystubPdf">Download PDF</button>
+                  <button type="button" class="btn secondary" id="duplicateStub">Duplicate row</button>
+                </div>
+                <p class="helper" id="warningBadge"></p>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-bottom">
+          <p>© 2024 PayStubs Pro. Demo clone for presentation only.</p>
+          <a class="btn ghost small" href="/">Back to home</a>
+        </div>
+      </footer>
+    </div>
+
+    <div class="modal" data-modal="signin" aria-hidden="true">
+      <div class="modal-overlay" data-close-modal></div>
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <div class="modal-header">
+          <h3>Welcome back</h3>
+          <button class="icon-btn" data-close-modal aria-label="Close">✕</button>
+        </div>
+        <p class="muted">Sign in to access your payroll dashboard.</p>
+        <form class="auth-form">
+          <label>
+            Email address
+            <input type="email" placeholder="you@company.com" />
+          </label>
+          <label>
+            Password
+            <input type="password" placeholder="••••••••" />
+          </label>
+          <button type="button" class="btn primary">Sign in</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" data-modal="signup" aria-hidden="true">
+      <div class="modal-overlay" data-close-modal></div>
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <div class="modal-header">
+          <h3>Create your account</h3>
+          <button class="icon-btn" data-close-modal aria-label="Close">✕</button>
+        </div>
+        <p class="muted">Start generating pay stubs for your team.</p>
+        <form class="auth-form">
+          <label>
+            Full name
+            <input type="text" placeholder="Jordan Ellis" />
+          </label>
+          <label>
+            Work email
+            <input type="email" placeholder="jordan@company.com" />
+          </label>
+          <label>
+            Create password
+            <input type="password" placeholder="At least 8 characters" />
+          </label>
+          <button type="button" class="btn primary">Create account</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="paystub.js"></script>
+  </body>
+</html>
