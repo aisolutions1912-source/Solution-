@@ -107,3 +107,61 @@ if (paystubForm) {
 
   updatePaystubPreview();
 }
+
+const downloadPaystubButton = document.getElementById("downloadPaystubPdf");
+
+if (downloadPaystubButton) {
+  downloadPaystubButton.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const employeeName = document.getElementById("employeeName")?.value || "Employee";
+    const payPeriod = document.getElementById("payPeriod")?.value || "Weekly";
+    const previewGross = document.getElementById("previewGross")?.textContent || "$0.00";
+    const previewDeductions = document.getElementById("previewDeductions")?.textContent || "$0.00";
+    const previewNet = document.getElementById("previewNet")?.textContent || "$0.00";
+    const previewFederal = document.getElementById("previewFederal")?.textContent || "$0.00";
+    const previewState = document.getElementById("previewState")?.textContent || "$0.00";
+    const previewBenefits = document.getElementById("previewBenefits")?.textContent || "$0.00";
+
+    const printWindow = window.open("", "_blank", "width=900,height=700");
+    if (!printWindow) {
+      return;
+    }
+
+    printWindow.document.write(`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pay Stub - ${employeeName}</title>
+    <style>
+      body { font-family: "Inter", Arial, sans-serif; margin: 40px; color: #0f172a; }
+      h1 { font-size: 24px; margin-bottom: 8px; }
+      .meta { color: #5b677a; margin-bottom: 24px; }
+      .grid { display: grid; gap: 12px; }
+      .row { display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; }
+      .total { background: #f1f5ff; padding: 12px 16px; border-radius: 10px; font-weight: 600; }
+      .deductions { margin-top: 16px; padding: 12px 16px; background: #f8fafc; border-radius: 10px; }
+    </style>
+  </head>
+  <body>
+    <h1>Pay Stub</h1>
+    <p class="meta">${employeeName} • ${payPeriod}</p>
+    <div class="grid">
+      <div class="row"><span>Gross pay</span><strong>${previewGross}</strong></div>
+      <div class="row"><span>Total deductions</span><strong>${previewDeductions}</strong></div>
+      <div class="row total"><span>Net pay</span><strong>${previewNet}</strong></div>
+    </div>
+    <div class="deductions">
+      <div class="row"><span>Federal tax</span><strong>${previewFederal}</strong></div>
+      <div class="row"><span>State tax</span><strong>${previewState}</strong></div>
+      <div class="row"><span>Benefits</span><strong>${previewBenefits}</strong></div>
+    </div>
+  </body>
+</html>`);
+
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+  });
+}
