@@ -233,6 +233,7 @@ body {
 }
 
 .features,
+.create-paystub,
 .preview,
 .pricing,
 .faq,
@@ -249,6 +250,47 @@ body {
   color: var(--muted);
   margin-top: 0.75rem;
   line-height: 1.6;
+}
+
+.create-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+}
+
+.paystub-form {
+  display: grid;
+  gap: 1.25rem;
+  background: var(--card);
+  border-radius: 24px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+}
+
+.paystub-form label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.paystub-form input {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.paystub-preview {
+  position: sticky;
+  top: 110px;
 }
 
 .feature-grid {
@@ -576,6 +618,10 @@ body {
 
   .header-content {
     justify-content: space-between;
+  }
+
+  .paystub-preview {
+    position: static;
   }
 }
 
